@@ -1,17 +1,38 @@
 import React from "react";
+import { useCounter } from "./useCounter";
 
 function Counter() {
   const incident = "Incident";
-  const counter = 0;
+
+  const { count, increment, decrement, set } = useCounter();
+
   return (
     <div>
       <h1>Days since last {incident}</h1>
-      <p>{counter}</p>
+      <p>{count}</p>
 
       <section>
-        <button>Increment</button>
-        <button>Decement</button>
-        <button>Reset</button>
+        <button
+          onClick={() => {
+            increment();
+          }}
+        >
+          Increment
+        </button>
+        <button
+          onClick={() => {
+            decrement();
+          }}
+        >
+          Decement
+        </button>
+        <button
+          onClick={() => {
+            set(0);
+          }}
+        >
+          Reset
+        </button>
       </section>
     </div>
   );
